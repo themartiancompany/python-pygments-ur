@@ -3,7 +3,7 @@
 
 pkgname=python-pygments
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Python syntax highlighter"
 arch=('any')
 url="http://pygments.org/"
@@ -18,7 +18,7 @@ md5sums=('54be67c04834f13d7e255e1797d629a5')
 build() {
   cd "$srcdir/Pygments-$pkgver"
 
-  python setup.py install --root="$pkgdir" -O1
+  python2 setup.py install --root="$pkgdir" -O1
 
   install -Dm644 external/pygments.bashcomp \
                  "$pkgdir/etc/bash_completion.d/pygments"

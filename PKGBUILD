@@ -1,4 +1,4 @@
-# Maintainer: Evangelos Foutras <foutrelis@gmail.com>
+# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Timm Preetz <timm@preetz.us>
 
 pkgname=('python-pygments' 'python2-pygments')

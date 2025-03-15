@@ -36,6 +36,7 @@ _pymajver="${_pyver%.*}"
 _pyminver="${_pymajver#*.}"
 _pynextver="${_pymajver%.*}.$(( \
   ${_pyminver} + 1))"
+_docs="false"
 _pkg=pygments
 pkgname="${_py}-${_pkg}"
 pkgver=2.19.1
@@ -54,13 +55,17 @@ depends=(
 )
 makedepends=(
   "${_py}-setuptools"
-  "${_py}-sphinx"
   "${_py}-wcag-contrast-ratio"
   "${_py}-build"
   "${_py}-installer"
   "${_py}-wheel"
   "${_py}-hatchling"
 )
+if [[ "${_docs}" == "true" ]]; then
+  makedepends+=(
+    "${_py}-sphinx"
+  )
+fi
 checkdepends=(
   "${_py}-pytest"
   "${_py}-lxml"
@@ -91,10 +96,12 @@ build() {
       build \
     --wheel \
     --no-isolation
-  make \
-    -C \
-      "doc" \
-    html
+  if [[ "${_docs}" == "true" ]]; then
+    make \
+      -C \
+        "doc" \
+      html
+  fi
 }
 
 check() {
@@ -120,15 +127,17 @@ package() {
   mkdir \
     -p \
     "${pkgdir}/usr/share/doc"
-  cp \
-    -rT \
-    "doc/_build/html" \
-    "${pkgdir}/usr/share/doc/${pkgname}"
-  install \
-    -Dm644 \
-    "doc/pygmentize.1" \
-    -t \
-    "${pkgdir}/usr/share/man/man1"
+  if [[ "${_docs}" == "true" ]]; then
+    cp \
+      -rT \
+      "doc/_build/html" \
+      "${pkgdir}/usr/share/doc/${pkgname}"
+    install \
+      -Dm644 \
+      "doc/pygmentize.1" \
+      -t \
+      "${pkgdir}/usr/share/man/man1"
+  fi
   install \
     -Dm644 \
     "external/pygments.bashcomp" \

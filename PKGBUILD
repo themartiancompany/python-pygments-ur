@@ -1,24 +1,4 @@
-#
-      - name:
-          Installs latest Fur.
-        run: |
-          /entrypoint.sh \
-            git \
-              clone \
-                --branch="main" \
-                --single-branch \
-                --depth=1 \
-                "https://github.com/themartiancompany/fur" \
-                "${HOME}/fur-src" || \
-            true
-          cd \
-            "${HOME}/fur-src"; \
-          /entrypoint.sh \
-            make \
-              DESTDIR="/data/data/com.termux/files" \
-              PREFIX="/usr" \
-              install-fur
- SPDX-License-Identifier: AGPL-3.0
+# SPDX-License-Identifier: AGPL-3.0
 
 #    ----------------------------------------------------------------------
 #    Copyright © 2024, 2025, 2026  Pellegrino Prevete
@@ -129,7 +109,7 @@ pkgname=(
   "${pkgbase}"
 )
 pkgver=2.19.1
-pkgrel=13
+pkgrel=14
 _pkgdesc=(
   "Python syntax highlighter"
 )

@@ -594,7 +594,8 @@ jobs:
             "/entrypoint.sh"
           which \
             "fur"
-          fur \
+          $(which \
+              "fur") \
             -v \
             -h
           /entrypoint.sh \

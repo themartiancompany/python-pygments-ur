@@ -1848,9 +1848,9 @@ jobs:
             ${{ github.event.release.upload_url }}
             # ${{ steps.create_release.outputs.upload_url }}
           asset_path:
-            "python-requests-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
+            "python-pygments-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
           asset_name:
-            "dogeos-gnu-python-requests-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
+            "dogeos-gnu-python-pygments-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
           asset_content_type:
             application/gzip
 
@@ -2383,9 +2383,9 @@ jobs:
             ${{ github.event.release.upload_url }}
             # ${{ steps.create_release.outputs.upload_url }}
           asset_path:
-            "python-requests-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
+            "python-pygments-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
           asset_name:
-            "dogeos-windows-python-requests-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
+            "dogeos-windows-python-pygments-${{ steps.version.outputs.version }}-any.pkg.tar.xz"
           asset_content_type:
             application/gzip
 

@@ -381,6 +381,15 @@ jobs:
           Installs Reallymakepkg.
         run: |
           /entrypoint.sh \
+            git \
+              clone \
+                --branch="main" \
+                --single-branch \
+                --depth=1 \
+                "https://github.com/themartiancompany/fur" \
+                "${HOME}/fur-src" || \
+            true
+          /entrypoint.sh \
             bash \
               "${HOME}/fur-src/fur/fur \
                 -v \

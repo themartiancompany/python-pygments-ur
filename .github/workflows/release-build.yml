@@ -381,12 +381,18 @@ jobs:
           Installs Reallymakepkg.
         run: |
           /entrypoint.sh \
-            fur \
-              -v \
-              -p \
-                "pacman" \
-              -d \
-              "reallymakepkg"
+            bash \
+              "${HOME}/fur-src/fur/fur \
+                -v \
+                -h
+          /entrypoint.sh \
+            bash \
+              "${HOME}/fur-src/fur/fur \
+                -v \
+                -p \
+                  "pacman" \
+                -d \
+                "reallymakepkg"
           /entrypoint.sh \
             rm \
               "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"

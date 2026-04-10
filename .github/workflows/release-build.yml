@@ -336,6 +336,14 @@ jobs:
               install \
                 "docutils"
       - name:
+          Installs Python Pygments.
+        run: |
+          /entrypoint.sh \
+            pip \
+              -v \
+              install \
+              "pygments"
+      - name:
           Installs latest Crash Bash Library.
         run: |
           git \
@@ -459,36 +467,31 @@ jobs:
             make \
               PREFIX="/usr" \
               install-fur
-      - name:
-          Installs Python Pygments.
-        run: |
-          /entrypoint.sh \
-            pip \
-              -v \
-              install \
-              "pygments"
-          # /entrypoint.sh \
-          #   fur \
-          #     -v \
-          #     -p \
-          #       "pacman" \
-          #     -d \
-          #     "python-pygments"
-          # /entrypoint.sh \
-          #   rm \
-          #     "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"
-          # /entrypoint.sh \
-          #   tree \
-          #     "${HOME}"
-          # /entrypoint.sh \
-          #   pacman \
-          #     -Udd \
-          #     --noconfirm \
-          #     "${HOME}/fur/termux/any/"*".pkg.tar."*
-          # /entrypoint.sh \
-          #   rm \
-          #     -rf \
-          #     "${HOME}/fur"
+      # - name:
+      #     Installs Python Pygments.
+      #   run: |
+      #     /entrypoint.sh \
+      #       fur \
+      #         -v \
+      #         -p \
+      #           "pacman" \
+      #         -d \
+      #         "python-pygments"
+      #     /entrypoint.sh \
+      #       rm \
+      #         "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"
+      #     /entrypoint.sh \
+      #       tree \
+      #         "${HOME}"
+      #     /entrypoint.sh \
+      #       pacman \
+      #         -Udd \
+      #         --noconfirm \
+      #         "${HOME}/fur/termux/any/"*".pkg.tar."*
+      #     /entrypoint.sh \
+      #       rm \
+      #         -rf \
+      #         "${HOME}/fur"
       - name:
           Installs Reallymakepkg.
         run: |

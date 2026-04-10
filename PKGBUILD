@@ -109,7 +109,7 @@ pkgname=(
   "${pkgbase}"
 )
 pkgver=2.19.1
-pkgrel=16
+pkgrel=17
 _pkgdesc=(
   "Python syntax highlighter"
 )

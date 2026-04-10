@@ -407,6 +407,7 @@ jobs:
             "${HOME}/gl-dl-src"
           /entrypoint.sh \
             make \
+              DESTDIR="/data/data/com.termux/files" \
               PREFIX="/usr" \
               install-scripts
       - name:
@@ -424,6 +425,7 @@ jobs:
             "${HOME}/evm-gnupg-src"
           /entrypoint.sh \
             make \
+              DESTDIR="/data/data/com.termux/files" \
               PREFIX="/usr" \
               install-scripts
       - name:
@@ -447,6 +449,7 @@ jobs:
             "${HOME}/gur-src"
           /entrypoint.sh \
             make \
+              DESTDIR="/data/data/com.termux/files" \
               PREFIX="/usr" \
               install-scripts
       - name:
@@ -465,6 +468,7 @@ jobs:
             "${HOME}/fur-src"
           /entrypoint.sh \
             make \
+              DESTDIR="/data/data/com.termux/files" \
               PREFIX="/usr" \
               install-fur
       # - name:
@@ -492,53 +496,53 @@ jobs:
       #       rm \
       #         -rf \
       #         "${HOME}/fur"
-      - name:
-          Installs Reallymakepkg.
-        run: |
-          /entrypoint.sh \
-            git \
-              clone \
-                --branch="main" \
-                --single-branch \
-                --depth=1 \
-                "https://github.com/themartiancompany/fur" \
-                "${HOME}/fur-src" || \
-            true
-          /entrypoint.sh \
-            bash \
-              "${HOME}/fur-src/fur/fur \
-                -v \
-                -h
-          /entrypoint.sh \
-            fur \
-              -v \
-              -p \
-                "pacman" \
-              -d \
-              "reallymakepkg"
-          /entrypoint.sh \
-            bash \
-              "${HOME}/fur-src/fur/fur \
-                -v \
-                -p \
-                  "pacman" \
-                -d \
-                "reallymakepkg"
-          /entrypoint.sh \
-            rm \
-              "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"
-          /entrypoint.sh \
-            tree \
-              "${HOME}"
-          /entrypoint.sh \
-            pacman \
-              -Udd \
-              --noconfirm \
-              "${HOME}/fur/termux/any/"*".pkg.tar."*
-          /entrypoint.sh \
-            rm \
-              -rf \
-              "${HOME}/fur"
+      # - name:
+      #     Installs Reallymakepkg.
+      #   run: |
+      #     /entrypoint.sh \
+      #       git \
+      #         clone \
+      #           --branch="main" \
+      #           --single-branch \
+      #           --depth=1 \
+      #           "https://github.com/themartiancompany/fur" \
+      #           "${HOME}/fur-src" || \
+      #       true
+      #     /entrypoint.sh \
+      #       bash \
+      #         "${HOME}/fur-src/fur/fur \
+      #           -v \
+      #           -h
+      #     /entrypoint.sh \
+      #       fur \
+      #         -v \
+      #         -p \
+      #           "pacman" \
+      #         -d \
+      #         "reallymakepkg"
+      #     /entrypoint.sh \
+      #       bash \
+      #         "${HOME}/fur-src/fur/fur \
+      #           -v \
+      #           -p \
+      #             "pacman" \
+      #           -d \
+      #           "reallymakepkg"
+      #     /entrypoint.sh \
+      #       rm \
+      #         "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"
+      #     /entrypoint.sh \
+      #       tree \
+      #         "${HOME}"
+      #     /entrypoint.sh \
+      #       pacman \
+      #         -Udd \
+      #         --noconfirm \
+      #         "${HOME}/fur/termux/any/"*".pkg.tar."*
+      #     /entrypoint.sh \
+      #       rm \
+      #         -rf \
+      #         "${HOME}/fur"
       - name:
           Installs 'build essential' ahah.
         run: |

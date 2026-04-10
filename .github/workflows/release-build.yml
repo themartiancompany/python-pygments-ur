@@ -324,15 +324,13 @@ jobs:
             rm \
               -rf \
               "${HOME}/fur"
+          /entrypoint.sh \
+            pacman \
+              -Ql \
+              "fur"
       - name:
-          Downloads latest Fur.
+          Installs latest Fur.
         run: |
-          mkdir \
-            -p \
-            "${HOME}"
-          rm \
-            -rf \
-            "${HOME}/fur-src"
           /entrypoint.sh \
             git \
               clone \
@@ -340,7 +338,14 @@ jobs:
                 --single-branch \
                 --depth=1 \
                 "https://github.com/themartiancompany/fur" \
-                "${HOME}/fur-src"
+                "${HOME}/fur-src" || \
+            true
+          cd \
+            "${HOME}/fur-src"
+          /entrypoint.sh \
+            make \
+              PREFIX="/usr" \
+              install-fur
       - name:
           Installs Python Pygments.
         run: |

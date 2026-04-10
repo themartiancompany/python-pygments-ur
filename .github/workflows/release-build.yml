@@ -329,6 +329,13 @@ jobs:
               -Ql \
               "fur"
       - name:
+          Install docutils.
+        run: |
+          /entrypoint.sh \
+            pip \
+              install \
+                "docutils"
+      - name:
           Installs latest Crash Bash Library.
         run: |
           git \
@@ -855,13 +862,6 @@ jobs:
             pacman \
               -Sy || \
             true
-      - name:
-          Install docutils.
-        run: |
-          /entrypoint.sh \
-            pip \
-              install \
-                "docutils"
       - name:
           Read pkgbase.
         run: |

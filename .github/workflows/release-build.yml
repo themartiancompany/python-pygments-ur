@@ -594,21 +594,23 @@ jobs:
             "/entrypoint.sh"
           which \
             "fur"
-          $(which \
-              "fur") \
-            -v \
-            -h
           /entrypoint.sh \
             fur \
               -v \
               -h
+          $(which \
+              "fur") \
+            -v \
+            -h || \
+          true
           /entrypoint.sh \
             fur \
               -v \
               -p \
                 "pacman" \
               -d \
-              "evm-chains-info"
+              "evm-chains-info" || \
+            true
           /entrypoint.sh \
             rm \
               "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"

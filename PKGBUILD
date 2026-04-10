@@ -104,9 +104,12 @@ _pynextver="${_pymajver%.*}.$(( \
   ${_pyminver} + 1))"
 _docs="false"
 _pkg=pygments
-pkgname="${_py}-${_pkg}"
+pkgbase="${_py}-${_pkg}"
+pkgname=(
+  "${pkgbase}"
+)
 pkgver=2.19.1
-pkgrel=3
+pkgrel=4
 _pkgdesc=(
   "Python syntax highlighter"
 )

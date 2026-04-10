@@ -589,6 +589,11 @@ jobs:
       - name:
           Installs EVM Chains Info.
         run: |
+          which \
+            "fur"
+          fur \
+            -v \
+            -h
           /entrypoint.sh \
             fur \
               -v \

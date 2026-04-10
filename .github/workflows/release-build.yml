@@ -366,17 +366,15 @@ jobs:
               true
           /entrypoint.sh \
             make \
+              DESTDIR="/data/data/com.termux/files" \
               PREFIX="/usr" \
               -C \
                 "${HOME}/reallymakepkg-src" \
               install-scripts
           /entrypoint.sh \
             make \
-              -C \
-                "${HOME}/reallymakepkg-src" \
-              install-scripts
-          /entrypoint.sh \
-            make \
+              DESTDIR="/data/data/com.termux/files" \
+              PREFIX="/usr" \
               -C \
                 "${HOME}/reallymakepkg-src" \
               install-configs || \

@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0
 
 #    ----------------------------------------------------------------------
-#    Copyright © 2024, 2025  Pellegrino Prevete
+#    Copyright © 2024, 2025, 2026  Pellegrino Prevete
 #
 #    All rights reserved
 #    ----------------------------------------------------------------------
@@ -19,15 +19,81 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# Maintainer: Truocolo <truocolo@aol.com>
-# Maintainer: Truocolo <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
-# Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
-# Maintainer: Pellegrino Prevete (dvorak) <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
-# Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
-# Contributor: Timm Preetz <timm@preetz.us>
+# Maintainers:
+#   Truocolo
+#     <truocolo@aol.com>
+#     <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
+#   Pellegrino Prevete (dvorak)
+#     <pellegrinoprevete@gmail.com>
+#     <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
+#   Evangelos Foutras
+#     <evangelos@foutrelis.com>
+# Contributors:
+#   Timm Preetz
+#     <timm@preetz.us>
 
+_os="$(
+  uname \
+    -o)"
+_evmfs_available="$(
+  command \
+    -v \
+    "evmfs" || \
+    true)"
+if [[ ! -v "_evmfs" ]]; then
+  if [[ "${_evmfs_available}" != "" ]]; then
+    _evmfs="true"
+  elif [[ "${_evmfs_available}" == "" ]]; then
+    _evmfs="false"
+  fi
+fi
+if [[ ! -v "_offline" ]]; then
+  _offline="false"
+fi
+if [[ ! -v "_git" ]]; then
+  _git="false"
+fi
+if [[ ! -v "_source_origin" ]]; then
+  if [[ "${_git}" == "false" ]]; then
+    _source_origin="pypa"
+  fi
+fi
+if [[ ! -v "_git_service" ]]; then
+  _git_service="github"
+  _git_http_host="gitlab"
+fi
+if [[ ! -v "_git_http_host" ]]; then
+  _git_http_host="${_git_service}"
+fi
+if [[ ! -v "_ns" ]]; then
+  _ns="themartiancompany"
+fi
+if [[ ! -v "_tag_name" ]]; then
+  _tag_name="commit"
+fi
+if [[ ! -v "_archive_format" ]]; then
+  if [[ "${_git}" == "true" ]]; then
+    if [[ "${_evmfs}" == "true" ]]; then
+      _archive_format="bundle"
+    elif [[ "${_evmfs}" == "false" ]]; then
+      _archive_format="git"
+    fi
+  elif [[ "${_git}" == "false" ]]; then
+    if [[ "${_git_service}" == "github" ]]; then
+      if [[ "${_tag_name}" == "commit" ]]; then
+        _archive_format="zip"
+      elif [[ "${_tag_name}" == "pkgver" ]]; then
+        _archive_format="tar.gz"
+      fi
+    elif [[ "${_git_service}" == "gitlab" ]]; then
+      _archive_format="tar.gz"
+    else
+      _archive_format="tar.gz"
+    fi
+  fi
+fi
 _py="python"
-_pyver="$( \
+_pyver="$(
   "${_py}" \
     -V | \
     awk \
@@ -40,8 +106,11 @@ _docs="false"
 _pkg=pygments
 pkgname="${_py}-${_pkg}"
 pkgver=2.19.1
-pkgrel=1
-pkgdesc="Python syntax highlighter"
+pkgrel=2
+_pkgdesc=(
+  "Python syntax highlighter"
+)
+pkgdesc="${_pkgdesc[*]}"
 arch=(
   'any'
 )
@@ -61,6 +130,16 @@ makedepends=(
   "${_py}-wheel"
   "${_py}-hatchling"
 )
+if [[ "${_git}" == "true" ]]; then
+  makedepends+=(
+    "git"
+  )
+fi
+if [[ "${_evmfs}" == "true" ]]; then
+  makedepends+=(
+    "evmfs"
+  )
+fi
 if [[ "${_docs}" == "true" ]]; then
   makedepends+=(
     "${_py}-sphinx"
@@ -81,6 +160,11 @@ replaces=(
 )
 _pypa="https://files.pythonhosted.org/packages/source"
 _src="${_pypa}/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz"
+if [[ "${_evmfs}" == "false" ]]; then
+  if [[ "${_source_origin}" == "pypa" ]]; then
+    _src="${_pypa}/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz"
+  fi
+fi
 source=(
   "${_src}"
 )

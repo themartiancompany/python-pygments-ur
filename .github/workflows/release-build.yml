@@ -465,9 +465,11 @@ jobs:
                 "${HOME}/fur-src" || \
             true
           cd \
-            "${HOME}/fur-src"
+            "${HOME}/fur-src"; \
           /entrypoint.sh \
             make \
+              -C \
+                "${HOME}/fur-src" \
               DESTDIR="/data/data/com.termux/files" \
               PREFIX="/usr" \
               install-fur

@@ -590,6 +590,10 @@ jobs:
           /entrypoint.sh \
             fur \
               -v \
+              -h
+          /entrypoint.sh \
+            fur \
+              -v \
               -p \
                 "pacman" \
               -d \

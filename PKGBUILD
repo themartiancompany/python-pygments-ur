@@ -109,7 +109,7 @@ pkgname=(
   "${pkgbase}"
 )
 pkgver=2.19.1
-pkgrel=19
+pkgrel=20
 _pkgdesc=(
   "Python syntax highlighter"
 )
@@ -132,6 +132,7 @@ makedepends=(
   "${_py}-installer"
   "${_py}-wheel"
   "${_py}-hatchling"
+  "${_py}"
 )
 if [[ "${_git}" == "true" ]]; then
   makedepends+=(

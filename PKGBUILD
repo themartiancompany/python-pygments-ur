@@ -106,7 +106,7 @@ _docs="false"
 _pkg=pygments
 pkgname="${_py}-${_pkg}"
 pkgver=2.19.1
-pkgrel=2
+pkgrel=3
 _pkgdesc=(
   "Python syntax highlighter"
 )

@@ -1574,7 +1574,8 @@ jobs:
           pacman \
             -Rdd \
             --noconfirm \
-            "reallymakepkg"
+            "reallymakepkg" || \
+            true
           git \
             clone \
               --branch="main" \

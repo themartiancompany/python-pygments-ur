@@ -699,6 +699,22 @@ jobs:
               -Sy || \
             true
       - name:
+          Installs Filesystem.
+        run: |
+          /entrypoint.sh \
+            fur \
+              -v \
+              -p \
+                "pacman" \
+              -m \
+                "github" \
+              -t \
+                "ci" \
+              -D \
+                "n" \
+              -T \
+              "filesystem"
+      - name:
           Installs Coreutils.
         run: |
           /entrypoint.sh \

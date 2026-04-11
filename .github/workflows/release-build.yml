@@ -548,12 +548,12 @@ jobs:
                 "https://github.com/themartiancompany/fur" \
                 "${HOME}/fur-src" || \
             true
-          /entrypoint.sh \
-            git \
-              -C \
-                "${HOME}/fur-src" \
-              checkout \
-                "7298b4939aca69ca6bd4c483267cf436c5047962"
+          # /entrypoint.sh \
+          #   git \
+          #     -C \
+          #       "${HOME}/fur-src" \
+          #     checkout \
+          #       "7298b4939aca69ca6bd4c483267cf436c5047962"
           cd \
             "${HOME}/fur-src"; \
           /entrypoint.sh \

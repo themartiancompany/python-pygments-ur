@@ -368,6 +368,9 @@ jobs:
             LD_PRELOAD="/data/data/com.termux/files/usr/lib/libtermux-exec.so" \
             SHELL="/data/data/com.termux/files/usr/bin/bash"; \
           /entrypoint.sh \
+            termux-fix-shebang \
+              "/data/data/com.termux/files/usr/bin/fur"
+          /entrypoint.sh \
             bash \
               -c \
                 "exec fur -v -h"

@@ -426,6 +426,18 @@ jobs:
                 "${HOME}/reallymakepkg-src" \
               install-scripts
           /entrypoint.sh \
+            termux-fix-shebang \
+              "$(which "reallymakepkg")"; \
+          /entrypoint.sh \
+            termux-fix-shebang \
+              "$(which "recipe-get")"; \
+          /entrypoint.sh \
+            termux-fix-shebang \
+              "$(which "platform-get")"; \
+          /entrypoint.sh \
+            termux-fix-shebang \
+              "$(which "package-info-get")"; \
+          /entrypoint.sh \
             make \
               DESTDIR="/data/data/com.termux/files" \
               PREFIX="/usr" \

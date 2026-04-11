@@ -1093,8 +1093,8 @@ jobs:
             "${PWD}" \
             -iname \
               "*pkg.tar*"
-          bash \
-            ".github/android-arm32-fix"
+          # bash \
+          #   ".github/android-arm32-fix"
       # - name:
       #     Installs the package.
       #   run: |
@@ -1143,7 +1143,7 @@ jobs:
         id:
           version
       - name:
-          Upload Android package.
+          Upload the Android package.
         uses:
           actions/upload-release-asset@v1
         env:

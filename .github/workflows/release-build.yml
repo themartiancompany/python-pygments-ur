@@ -464,6 +464,28 @@ jobs:
             -v \
             -h
       - name:
+          Installs LibEVM.
+        run: |
+          /entrypoint.sh \
+            fur \
+              -v \
+              -p \
+                "pacman" \
+              -d \
+              "libevm"
+          /entrypoint.sh \
+            rm \
+              "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"
+          /entrypoint.sh \
+            pacman \
+              -Udd \
+              --noconfirm \
+              "${HOME}/fur/termux/any/"*".pkg.tar."*
+          /entrypoint.sh \
+            rm \
+              -rf \
+              "${HOME}/fur"
+      - name:
           Installs latest EVM GNUPG.
         run: |
           /entrypoint.sh \
@@ -486,10 +508,6 @@ jobs:
           /entrypoint.sh \
             termux-fix-shebang \
               "$(which "evm-gpg")"; \
-          /entrypoint.sh \
-            evm-gpg \
-              -v \
-              -h
       - name:
           Installs latest Gur.
         run: |
@@ -699,28 +717,6 @@ jobs:
                 "pacman" \
               -d \
               "evm-chains-explorers"
-          /entrypoint.sh \
-            rm \
-              "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"
-          /entrypoint.sh \
-            pacman \
-              -Udd \
-              --noconfirm \
-              "${HOME}/fur/termux/any/"*".pkg.tar."*
-          /entrypoint.sh \
-            rm \
-              -rf \
-              "${HOME}/fur"
-      - name:
-          Installs LibEVM.
-        run: |
-          /entrypoint.sh \
-            fur \
-              -v \
-              -p \
-                "pacman" \
-              -d \
-              "libevm"
           /entrypoint.sh \
             rm \
               "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"

@@ -680,6 +680,9 @@ jobs:
       #         "${HOME}/fur"
       - name:
           Installs EVM Chains Info.
+        env:
+          GH_TOKEN:
+            ${{ secrets.GITHUB_TOKEN }}
         run: |
           /entrypoint.sh \
             platform-get \

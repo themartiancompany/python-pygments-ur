@@ -93,7 +93,9 @@ jobs:
     # approximate environment variables for actions that can't be forced to use entrypoint.sh
     env:
       GH_TOKEN:
-        ${{ github.token }}
+        ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN:
+        ${{ secrets.GITHUB_TOKEN }}
       TERMUX_MAIN_PACKAGE_FORMAT:
         debian
       TERMUX_VERSION:

@@ -595,6 +595,9 @@ jobs:
       - name:
           Installs EVM Chains Info.
         run: |
+          /entrypoint.sh \
+            -v \
+            platform-get
           cat \
             "/entrypoint.sh"
           which \

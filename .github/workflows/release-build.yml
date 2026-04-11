@@ -363,7 +363,7 @@ jobs:
                 "coreutils" || \
           true
           export \
-            LD_PRELOAD="/data/data/com.termux/files/usr/lib/libtermux_exec.so"; \
+            LD_PRELOAD="/data/data/com.termux/files/usr/lib/libtermux-exec.so"; \
           /entrypoint.sh \
             bash \
               -c \

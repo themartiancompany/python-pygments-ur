@@ -369,7 +369,7 @@ jobs:
             SHELL="/data/data/com.termux/files/usr/bin/bash"; \
           /entrypoint.sh \
             termux-fix-shebang \
-              "/data/data/com.termux/files/usr/bin/fur"
+              "/data/data/com.termux/files/usr/bin/fur"; \
           /entrypoint.sh \
             bash \
               -c \
@@ -457,6 +457,9 @@ jobs:
               PREFIX="/usr" \
               install-scripts
           /entrypoint.sh \
+            termux-fix-shebang \
+              "$(which "gl-dl")"; \
+          /entrypoint.sh \
             gl-dl \
             -v \
             -h
@@ -472,12 +475,21 @@ jobs:
                 "${HOME}/evm-gnupg-src" || \
             true
           cd \
-            "${HOME}/evm-gnupg-src"
+            "${HOME}/evm-gnupg-src"; \
           /entrypoint.sh \
             make \
+              -C \
+                "${HOME}/evm-gnupg-src" \
               DESTDIR="/data/data/com.termux/files" \
               PREFIX="/usr" \
               install-scripts
+          /entrypoint.sh \
+            termux-fix-shebang \
+              "$(which "evm-gpg")"; \
+          /entrypoint.sh \
+            evm-gpg \
+              -v \
+              -h
       - name:
           Installs latest Gur.
         run: |
@@ -496,12 +508,21 @@ jobs:
                 "${HOME}/gur-src" || \
             true
           cd \
-            "${HOME}/gur-src"
+            "${HOME}/gur-src"; \
           /entrypoint.sh \
             make \
+              -C \
+                "${HOME}/gur-src" \
               DESTDIR="/data/data/com.termux/files" \
               PREFIX="/usr" \
               install-scripts
+          /entrypoint.sh \
+            termux-fix-shebang \
+              "$(which "gur")"; \
+          /entrypoint.sh \
+            gur \
+              -v \
+              -h
       - name:
           Installs latest Fur.
         run: |
@@ -528,6 +549,13 @@ jobs:
               DESTDIR="/data/data/com.termux/files" \
               PREFIX="/usr" \
               install-fur
+          /entrypoint.sh \
+            termux-fix-shebang \
+              "$(which "fur")"; \
+          /entrypoint.sh \
+            fur \
+              -v \
+              -h
       # - name:
       #     Installs Python Pygments.
       #   run: |

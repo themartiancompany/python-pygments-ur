@@ -362,6 +362,8 @@ jobs:
                 -y \
                 "coreutils" || \
           true
+          cat \
+            "/entrypoint.sh"
           export \
             LD_PRELOAD="/data/data/com.termux/files/usr/lib/libtermux-exec.so" \
             SHELL="/data/data/com.termux/files/usr/bin/bash"; \

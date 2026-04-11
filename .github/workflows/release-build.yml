@@ -411,6 +411,10 @@ jobs:
               DESTDIR="/data/data/com.termux/files" \
               PREFIX="/usr" \
               install-scripts
+          /entrypoint.sh \
+            gl-dl \
+            -v \
+            -h
       - name:
           Installs latest EVM GNUPG.
         run: |

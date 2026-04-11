@@ -709,6 +709,20 @@ jobs:
             pacman \
               -Sy || \
             true
+      - name:
+          Installs Coreutils.
+        run: |
+          /entrypoint.sh \
+            pacman \
+              -Sy \
+              --noconfirm \
+              --overwrite="*" \
+              "coreutils" || \
+            true
+              -p \
+                "pacman" \
+              -d \
+              "termux-keyring"
       - uses:
           actions/checkout@v4.2.2
       - name:

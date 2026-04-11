@@ -722,6 +722,8 @@ jobs:
               -p \
                 "pacman" \
               -d \
+              -D \
+                "n" \
               "termux-keyring"
       - uses:
           actions/checkout@v4.2.2

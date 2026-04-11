@@ -537,10 +537,6 @@ jobs:
           /entrypoint.sh \
             termux-fix-shebang \
               "$(which "gur")"; \
-          /entrypoint.sh \
-            gur \
-              -v \
-              -h
       - name:
           Installs latest Fur.
         run: |

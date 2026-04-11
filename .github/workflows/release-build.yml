@@ -347,17 +347,24 @@ jobs:
       - name:
           Installs latest Crash Bash Library.
         run: |
-          git \
-            clone \
-              "https://github.com/themartiancompany/crash-bash"
+          /entrypoint.sh \
+            git \
+              clone \
+                "https://github.com/themartiancompany/crash-bash" \
+                "${HOME}/crash-bash"
           cd \
-            "crash-bash"
-          mkdir \
-            -p \
-            "/usr/lib/libcrash-bash"
-          make \
-            PREFIX="/usr" \
-            install
+            "${HOME}/crash-bash"
+          /entrypoint.sh \
+            mkdir \
+              -p \
+              "/data/data/com.termux/files/usr/lib/libcrash-bash"
+          /entrypoint.sh \
+            make \
+              -C \
+                "${HOME}/crash-bash"
+              DESTDIR="/data/data/com.termux/files" \
+              PREFIX="/usr" \
+              install
       - name:
           Installs latest Reallymakepkg.
         run: |

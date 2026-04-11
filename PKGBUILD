@@ -164,6 +164,8 @@ replaces=(
 )
 _pypa="https://files.pythonhosted.org/packages/source"
 _src="${_pypa}/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz"
+_bundle_sum="c161c5a47b5813ed9e92fb152f93514fbaf57f102cdce47a0d5809a6517c4c28"
+_bundle_sig_sum="f330bc2f761448df27339c8cf2d486bcc438ccfdba63e0da0bce6cf3b19b8d65"
 if [[ "${_evmfs}" == "false" ]]; then
   if [[ "${_source_origin}" == "pypa" ]]; then
     _src="${_pypa}/${_pkg::1}/${_pkg}/${_pkg}-${pkgver}.tar.gz"

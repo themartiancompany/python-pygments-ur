@@ -491,6 +491,14 @@ jobs:
             -v \
             -h
       - name:
+          Installs make.
+        run: |
+          /entrypoint.sh \
+            pkg \
+              install \
+                -y \
+                "make"
+      - name:
           Installs LibEVM.
         run: |
           /entrypoint.sh \
@@ -502,6 +510,7 @@ jobs:
               "libevm"
           /entrypoint.sh \
             rm \
+              -rf \
               "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"
           /entrypoint.sh \
             pacman \

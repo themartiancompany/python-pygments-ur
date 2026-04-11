@@ -712,7 +712,7 @@ jobs:
               -m \
                 "github" \
               -t \
-                "ci" \
+                "tree" \
               -D \
                 "n" \
               -T \

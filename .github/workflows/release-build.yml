@@ -700,6 +700,8 @@ jobs:
               -v \
               -p \
                 "pacman" \
+              -m \
+                "github" \
               -d \
               "evm-chains-info" || \
             true

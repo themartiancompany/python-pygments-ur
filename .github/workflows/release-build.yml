@@ -700,6 +700,9 @@ jobs:
             true
       - name:
           Installs Filesystem.
+        env:
+          GH_TOKEN:
+            ${{ github.token }}
         run: |
           /entrypoint.sh \
             fur \

@@ -739,19 +739,6 @@ jobs:
                 "tree" \
               "evm-chains-info" || \
             true
-          /entrypoint.sh \
-            rm \
-              -rf \
-              "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"
-          /entrypoint.sh \
-            pacman \
-              -Udd \
-              --noconfirm \
-              "${HOME}/fur/termux/any/"*".pkg.tar."*
-          /entrypoint.sh \
-            rm \
-              -rf \
-              "${HOME}/fur"
       - name:
           Installs EVM Chains Explorers.
         run: |
@@ -760,20 +747,7 @@ jobs:
               -v \
               -p \
                 "pacman" \
-              -d \
               "evm-chains-explorers"
-          /entrypoint.sh \
-            rm \
-              "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"
-          /entrypoint.sh \
-            pacman \
-              -Udd \
-              --noconfirm \
-              "${HOME}/fur/termux/any/"*".pkg.tar."*
-          /entrypoint.sh \
-            rm \
-              -rf \
-              "${HOME}/fur"
       - name:
           Installs EVM Contracts Tools.
         run: |

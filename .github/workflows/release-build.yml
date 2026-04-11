@@ -361,7 +361,7 @@ jobs:
           /entrypoint.sh \
             make \
               -C \
-                "${HOME}/crash-bash"
+                "${HOME}/crash-bash" \
               DESTDIR="/data/data/com.termux/files" \
               PREFIX="/usr" \
               install

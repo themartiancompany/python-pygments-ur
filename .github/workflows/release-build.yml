@@ -197,6 +197,10 @@ jobs:
           /entrypoint.sh \
             pip \
               install \
+                "hatchling"
+          /entrypoint.sh \
+            pip \
+              install \
                 "setuptools"
           /entrypoint.sh \
             pip \

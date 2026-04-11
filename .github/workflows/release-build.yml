@@ -280,6 +280,25 @@ jobs:
             pacman-key \
               --init
       - name:
+          Installs 'build essential' ahah.
+        run: |
+          /entrypoint.sh \
+            pkg \
+              install \
+                -y \
+                binutils \
+                bsdtar \
+                file \
+                build-essential
+      - name:
+          Installs make.
+        run: |
+          /entrypoint.sh \
+            pkg \
+              install \
+                -y \
+                "make"
+      - name:
           Installs Crash Bash Library.
         run: |
           /entrypoint.sh git \
@@ -562,25 +581,6 @@ jobs:
       #       rm \
       #         -rf \
       #         "${HOME}/fur"
-      - name:
-          Installs 'build essential' ahah.
-        run: |
-          /entrypoint.sh \
-            pkg \
-              install \
-                -y \
-                binutils \
-                bsdtar \
-                file \
-                build-essential
-      - name:
-          Installs make.
-        run: |
-          /entrypoint.sh \
-            pkg \
-              install \
-                -y \
-                "make"
       # - name:
       #     Installs Python Docutils.
       #   run: |

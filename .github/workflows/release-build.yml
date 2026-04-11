@@ -687,6 +687,8 @@ jobs:
               -p \
                 "pacman" \
               -d \
+              -D \
+                "n" \
               "termux-keyring"
           /entrypoint.sh \
             rm \
@@ -719,12 +721,6 @@ jobs:
               --overwrite="*" \
               "coreutils" || \
             true
-              -p \
-                "pacman" \
-              -d \
-              -D \
-                "n" \
-              "termux-keyring"
       - uses:
           actions/checkout@v4.2.2
       - name:

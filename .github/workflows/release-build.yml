@@ -357,9 +357,9 @@ jobs:
               -Ql \
               "fur"
           /entrypoint.sh \
-            fur \
-            -v \
-            -h
+            bash \
+              -c \
+                "fur -v -h"
       - name:
           Installs Python Pygments.
         run: |

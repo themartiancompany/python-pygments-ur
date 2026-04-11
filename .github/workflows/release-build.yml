@@ -678,11 +678,10 @@ jobs:
       #       rm \
       #         -rf \
       #         "${HOME}/fur"
+      - uses:
+          actions/checkout@v4.2.2
       - name:
           Installs EVM Chains Info.
-        env:
-          GH_TOKEN:
-            ${{ github.token }}
         run: |
           /entrypoint.sh \
             platform-get \
@@ -707,6 +706,8 @@ jobs:
                 "pacman" \
               -m \
                 "github" \
+              -t \
+                "tree" \
               -d \
               "evm-chains-info" || \
             true

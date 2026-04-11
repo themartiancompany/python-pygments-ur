@@ -741,6 +741,7 @@ jobs:
             true
           /entrypoint.sh \
             rm \
+              -rf \
               "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"
           /entrypoint.sh \
             pacman \

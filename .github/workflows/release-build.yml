@@ -686,24 +686,23 @@ jobs:
               -v \
               -p \
                 "pacman" \
-              -d \
               -D \
                 "n" \
               "termux-keyring"
-          /entrypoint.sh \
-            rm \
-              -rf \
-              "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"
-          /entrypoint.sh \
-            pacman \
-              -Udd \
-              --noconfirm \
-              "${HOME}/fur/termux/any/"*".pkg.tar."* \
-              --overwrite="*"
-          /entrypoint.sh \
-            rm \
-              -rf \
-              "${HOME}/fur"
+          # /entrypoint.sh \
+          #   rm \
+          #     -rf \
+          #     "${HOME}/fur/termux/any/"*".pkg.tar."*".sig"
+          # /entrypoint.sh \
+          #   pacman \
+          #     -Udd \
+          #     --noconfirm \
+          #     "${HOME}/fur/"*".pkg.tar."* \
+          #     --overwrite="*"
+          # /entrypoint.sh \
+          #   rm \
+          #     -rf \
+          #     "${HOME}/fur"
           /entrypoint.sh \
             pacman-key \
               --init || \

@@ -688,6 +688,7 @@ jobs:
                 "pacman" \
               -D \
                 "n" \
+              -T \
               "termux-keyring"
           /entrypoint.sh \
             pacman-key \
@@ -737,6 +738,7 @@ jobs:
                 "github" \
               -t \
                 "tree" \
+              -T \
               "evm-chains-info" || \
             true
       - name:

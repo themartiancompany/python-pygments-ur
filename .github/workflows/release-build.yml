@@ -429,16 +429,24 @@ jobs:
               install-scripts
           /entrypoint.sh \
             termux-fix-shebang \
-              "$(which "reallymakepkg")"; \
+              "$(which \
+                   "reallymakepkg")"; \
           /entrypoint.sh \
             termux-fix-shebang \
-              "$(which "recipe-get")"; \
+              "$(which \
+                   "recipe-get")"; \
           /entrypoint.sh \
             termux-fix-shebang \
-              "$(which "platform-get")"; \
+              "$(which \
+                   "platform-get")"; \
           /entrypoint.sh \
             termux-fix-shebang \
-              "$(which "package-info-get")"; \
+              "$(which \
+                   "package-info-get")"; \
+          /entrypoint.sh \
+            termux-fix-shebang \
+              "$(which \
+                   "version-split")"; \
           /entrypoint.sh \
             make \
               DESTDIR="/data/data/com.termux/files" \
@@ -472,7 +480,8 @@ jobs:
               install-scripts
           /entrypoint.sh \
             termux-fix-shebang \
-              "$(which "gl-dl")"; \
+              "$(which \
+                   "gl-dl")"; \
           /entrypoint.sh \
             gl-dl \
             -v \
@@ -521,7 +530,8 @@ jobs:
               install-scripts
           /entrypoint.sh \
             termux-fix-shebang \
-              "$(which "evm-gpg")"; \
+              "$(which \
+                   "evm-gpg")"; \
       - name:
           Installs latest Gur.
         run: |
@@ -550,7 +560,8 @@ jobs:
               install-scripts
           /entrypoint.sh \
             termux-fix-shebang \
-              "$(which "gur")"; \
+              "$(which \
+                   "gur")"; \
       - name:
           Installs latest Fur.
         run: |
@@ -579,7 +590,8 @@ jobs:
               install-fur
           /entrypoint.sh \
             termux-fix-shebang \
-              "$(which "fur")"; \
+              "$(which \
+                   "fur")"; \
           /entrypoint.sh \
             fur \
               -v \
